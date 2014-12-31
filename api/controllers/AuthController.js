@@ -9,7 +9,7 @@ module.exports = {
 	login: function (request, response) {
     var name = request.param('login');
     var password = request.param('password');
-    User.findByName(name).exec(function (error, user) {
+    User.findOneByName(name).exec(function (error, user) {
       if (password == user.password) {
         request.session.authenticated = true;
       }
