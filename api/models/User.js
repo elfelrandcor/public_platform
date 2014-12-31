@@ -10,6 +10,9 @@ module.exports = {
   attributes: {
     name: {
       type: 'string'
+    },
+    password: {
+      type: 'string'
     }
   }
 };
