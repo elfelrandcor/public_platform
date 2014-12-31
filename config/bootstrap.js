@@ -11,6 +11,17 @@
 
 module.exports.bootstrap = function(cb) {
 
+  User.findOneByName('admin').exec(function (error, user) {
+    if (!user) {
+      User.create({name: 'admin', password: 'admin'}, function (error, created) {
+        if (error) {
+          console.log('Admin was not created');
+          return false;
+        }
+        console.log('Admin was created with password: ' + created.password);
+      });
+    }
+  });
   // It's very important to trigger this callback method when you are finished
   // with the bootstrap!  (otherwise your server will never lift, since it's waiting on the bootstrap)
   cb();
