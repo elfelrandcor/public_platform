@@ -59,7 +59,7 @@ module.exports.policies = {
     'form': 'sessionAuth',
     'add': 'sessionAuth',
     'subscribe': true,
-    'list': true,
+    'index': true
   },
 
   UserController: {

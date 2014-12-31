@@ -6,6 +6,10 @@
  */
 
 module.exports = {
+  index: function (request, response, next) {
+    response.view('main');
+  },
+
 	form: function (request, response) {
     response.view();
   },
@@ -31,20 +35,12 @@ module.exports = {
   },
 
   subscribe: function (request, response, next) {
-    Post.find(function(err, posts) {
+    Post.find().limit(10).sort('createdAt desc').exec(function(err, posts) {
       if (err) {
         return next(err);
       }
       Post.watch(request);
       response.json(posts);
-    });
-  },
-  list: function (request, response, next) {
-    Post.find(function(err, posts) {
-      if (err) {
-        return next(err);
-      }
-      response.view('main', {posts: posts});
     });
   }
 };
