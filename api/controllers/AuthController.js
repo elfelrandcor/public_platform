@@ -7,6 +7,10 @@
 
 module.exports = {
 	login: function (request, response) {
+    if (request.session.authenticated) {
+      return response.redirect("/");
+    }
+
     var name = request.param('login');
     var password = request.param('password');
     if (!name || !password) {
