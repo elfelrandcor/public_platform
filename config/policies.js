@@ -51,7 +51,9 @@ module.exports.policies = {
   PostController: {
     '*': false,
     'find': true,
-    'findOne': true
+    'findOne': true,
+    'form': 'sessionAuth',
+    'add': 'sessionAuth'
   },
 
   UserController: {
