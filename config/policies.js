@@ -64,5 +64,9 @@ module.exports.policies = {
 
   UserController: {
     '*': ['sessionAuth']
+  },
+
+  FileController: {
+    '*': 'sessionAuth'
   }
 };
