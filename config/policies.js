@@ -49,14 +49,12 @@ module.exports.policies = {
 		// feed : ['isNiceToAnimals', 'hasRabbitFood']
 	// }
   PostController: {
-    edit: 'sessionAuth',
-    create: 'sessionAuth',
-    delete: 'sessionAuth'
+    '*': false,
+    'find': true,
+    'findOne': true
   },
 
   UserController: {
-    edit: 'sessionAuth',
-    create: 'sessionAuth',
-    delete: 'sessionAuth'
+    '*': 'sessionAuth'
   }
 };
