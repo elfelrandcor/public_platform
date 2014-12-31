@@ -21,6 +21,12 @@
 
 module.exports.connections = {
 
+  productionDb: {
+    adapter: 'sails-redis',
+    host: 'localhost',
+    port: 6379
+  },
+
   /***************************************************************************
   *                                                                          *
   * Local disk storage for DEVELOPMENT ONLY                                  *
