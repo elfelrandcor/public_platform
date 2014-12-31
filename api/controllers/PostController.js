@@ -25,7 +25,26 @@ module.exports = {
       body: body
     }, function (error, created) {
       if (error) return next(error);
+      Post.publishCreate(created);
       response.redirect('post/' + created.id);
+    });
+  },
+
+  subscribe: function (request, response, next) {
+    Post.find(function(err, posts) {
+      if (err) {
+        return next(err);
+      }
+      Post.watch(request);
+      response.json(posts);
+    });
+  },
+  list: function (request, response, next) {
+    Post.find(function(err, posts) {
+      if (err) {
+        return next(err);
+      }
+      response.view('main', {posts: posts});
     });
   }
 };

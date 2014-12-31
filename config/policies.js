@@ -26,7 +26,7 @@ module.exports.policies = {
   *                                                                          *
   ***************************************************************************/
 
-  '*': true,
+  '*': false,
 
   /***************************************************************************
   *                                                                          *
@@ -48,15 +48,21 @@ module.exports.policies = {
 		// before letting any users feed our rabbits
 		// feed : ['isNiceToAnimals', 'hasRabbitFood']
 	// }
+  AuthController: {
+    '*': true
+  },
+
   PostController: {
     '*': false,
     'find': true,
     'findOne': true,
     'form': 'sessionAuth',
-    'add': 'sessionAuth'
+    'add': 'sessionAuth',
+    'subscribe': true,
+    'list': true,
   },
 
   UserController: {
-    '*': 'sessionAuth'
+    '*': ['sessionAuth']
   }
 };
